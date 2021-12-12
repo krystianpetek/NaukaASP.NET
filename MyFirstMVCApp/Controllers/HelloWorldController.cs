@@ -12,7 +12,7 @@ namespace MyFirstMVCApp.Controllers
 
         public IActionResult Welcome(string name, int numTimes= 1)
         {
-            ViewData["Message"] = name;
+            ViewData["Message"] = "Hello" + name;
             ViewData["NumTimes"] = numTimes;
             return View();
         }

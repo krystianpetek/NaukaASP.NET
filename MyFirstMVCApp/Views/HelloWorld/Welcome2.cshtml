@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Welcome";
+    var liczba = (int)ViewData["liczba"];
+}
+<h2>Welcome</h2>
+<ul>
+    @for(int i = 0; i < liczba; i++)
+        {
+        <li>@liczba</li>;
+        }
+</ul>
+<table>
+    <tr>
+        <td>
+            <form asp-controller="HelloWorld" asp-action="Welcome2" method="get">
+                <input name="id"/>
+            <input type="submit" value="Click" />
+            </form>
+        </td>
+    </tr>
+</table>

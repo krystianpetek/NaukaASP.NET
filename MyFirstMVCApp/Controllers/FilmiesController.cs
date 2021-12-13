@@ -18,11 +18,35 @@ namespace MyFirstMVCApp.Controllers
         {
             _context = context;
         }
-
-        // GET: Filmies
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index(string id)
+        //{
+        //    var movies = from x in _context.Filmy select x;
+        //    if(!String.IsNullOrEmpty(id))
+        //    {
+        //        movies = movies.Where(s=> s.Name!.Contains(id));
+        //    }
+        //    return View(await movies.ToListAsync());
+        //}
+        public async Task<IActionResult> Index(string GatunekFilmu, string SearchString)
         {
-            return View(await _context.Filmy.ToListAsync());
+            IQueryable<string> gatunekQuery = from m in _context.Filmy orderby m.Genre select m.Genre;
+
+            var movies = from m in _context.Filmy select m;
+            if(!string.IsNullOrEmpty(SearchString))
+            {
+                movies = movies.Where(s=>s.Name!.Contains(SearchString));
+            }
+            if(!string.IsNullOrEmpty(GatunekFilmu))
+            {
+                movies = movies.Where(d=>d.Genre.Contains(GatunekFilmu));
+            }
+
+            var movieGenreVM = new FilmyGatunekModel
+            {
+                Gatunki = new SelectList(await gatunekQuery.Distinct().ToListAsync()),
+                Filmy = await movies.ToListAsync()
+            };
+            return View(movieGenreVM);
         }
 
         // GET: Filmies/Details/5
@@ -54,7 +78,7 @@ namespace MyFirstMVCApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,ReleaseDate,Genre,Price")] Filmy filmy)
+        public async Task<IActionResult> Create([Bind("Id,Name,ReleaseDate,Genre,Price,Rating")] Filmy filmy)
         {
             if (ModelState.IsValid)
             {

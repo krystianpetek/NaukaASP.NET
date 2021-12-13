@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Text.Encodings.Web;
+using MyFirstMVCApp.Models;
 
 namespace MyFirstMVCApp.Controllers
 {
@@ -14,6 +15,12 @@ namespace MyFirstMVCApp.Controllers
         {
             ViewData["Message"] = "Hello" + name;
             ViewData["NumTimes"] = numTimes;
+            return View();
+        }
+
+        public IActionResult Welcome2(int id)
+        {
+            ViewData["liczba"] = id;
             return View();
         }
     }

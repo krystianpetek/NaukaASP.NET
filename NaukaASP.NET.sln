@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFirstMVCApp", "MyFirstMVCApp\MyFirstMVCApp.csproj", "{4CE8D5D6-BA0C-4CF7-A4F8-495620F34B00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFirstMVCApp", "MyFirstMVCApp\MyFirstMVCApp.csproj", "{4CE8D5D6-BA0C-4CF7-A4F8-495620F34B00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQ", "LINQ\LINQ.csproj", "{44B2FF12-40A6-4B3C-B852-6BA085DB844B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{4CE8D5D6-BA0C-4CF7-A4F8-495620F34B00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4CE8D5D6-BA0C-4CF7-A4F8-495620F34B00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4CE8D5D6-BA0C-4CF7-A4F8-495620F34B00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44B2FF12-40A6-4B3C-B852-6BA085DB844B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44B2FF12-40A6-4B3C-B852-6BA085DB844B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44B2FF12-40A6-4B3C-B852-6BA085DB844B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44B2FF12-40A6-4B3C-B852-6BA085DB844B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

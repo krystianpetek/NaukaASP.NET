@@ -41,7 +41,7 @@ namespace LINQ
     {
         static void Main(string[] args)
         {
-            string csvPath = $"C:/GITHUB/NaukaASP.NET/LINQ/googleplaystore1.csv";
+            string csvPath = $"../../../googleplaystore1.csv";
             var app = LoadGoogleAps(csvPath);
 
             //Display(app);

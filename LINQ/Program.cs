@@ -1,8 +1,4 @@
-﻿// wczytanie csv
-// where
-// first, single, last, firstordefault, singleordefault
-
-// mapowanie na inna koleckej np . GGappsDTO class
+﻿// mapowanie na inna koleckej np . GGappsDTO class
 // select
 // selectmany
 // typ anonimowy
@@ -49,13 +45,137 @@ namespace LINQ
             var app = LoadGoogleAps(csvPath);
 
             //Display(app);
-            GetData(app);
+            //GetData(app);
+            //ProjectData(app);
+            //DivideData(app);
+            //OrderData(app);
+            //DataSetOperation(app);
+            DataVerification(app);
+
         }
-        
+        static void DataVerification(IEnumerable<googleApp> app)
+        {
+            var wynikOperatoraAll = app
+                .Where(a => a.Category == Category.WEATHER)
+                .All(a => a.Reviews > 10);
+            Console.WriteLine($"{nameof(wynikOperatoraAll)} {wynikOperatoraAll}");
+
+
+            var wynikOperatoraAny = app
+                .Where(a => a.Category == Category.WEATHER)
+                .Any(a => a.Reviews > 3_000_000);
+            Console.WriteLine($"{nameof(wynikOperatoraAny)} {wynikOperatoraAny}");
+        }
+
+        static void DataSetOperation(IEnumerable<googleApp> app)
+        {
+            var kategoriePlatnychAplikacji = app
+                .Where(x => x.Type == Type.Paid)
+                .Select(x => x.Category)
+                .Distinct();
+            //Console.WriteLine($"Płatne aplikacje kategorie: \n{string.Join(Environment.NewLine, kategoriePlatnychAplikacji)}");
+
+            var setA = app
+                .Where(x => x.Rating > 4.7)
+                .Where(x => x.Type == Type.Paid)
+                .Where(x => x.Reviews > 1000);
+            var setB = app
+                .Where(x => x.Name.Contains("Pro"))
+                .Where(x => x.Rating > 4.6)
+                .Where(x => x.Reviews > 10000);
+
+            var polaczoneSetASetB = setA.Union(setB);
+            var wspolneSetAsetB = setA.Intersect(setB);
+            var wylaczSetASetB = setA.Except(setB);
+            var wylaczSetBSetA = setB.Except(setA);
+
+            Console.WriteLine(nameof(wylaczSetASetB));
+            Display(wylaczSetASetB);
+            Console.WriteLine();
+            Console.WriteLine(nameof(wylaczSetBSetA));
+            Display(wylaczSetBSetA);
+
+        }
+        static void OrderData(IEnumerable<googleApp> app)
+        {
+            var nazwaAplikacjiNaKGame = app
+                .Where(x => x.Name.StartsWith("K"))
+                .Where(x => x.Category == Category.GAME);
+            var sortowanaNazwaAplikacjiNaKGame = nazwaAplikacjiNaKGame.OrderBy(app => app.Rating);
+            var sortowanaMalejacoNazwaAplikacjiNaKGame = nazwaAplikacjiNaKGame.OrderByDescending(app => app.Reviews);
+            var kolejnyWarunekSortowanaMalejacoNazwaAplikacjiNaKGame = nazwaAplikacjiNaKGame
+                .OrderByDescending(app => app.Rating)
+                .ThenByDescending(app=>app.Name)
+                .ThenByDescending(app=>app.Reviews);
+
+            Console.WriteLine($"\n" + nameof(kolejnyWarunekSortowanaMalejacoNazwaAplikacjiNaKGame));
+            Display(kolejnyWarunekSortowanaMalejacoNazwaAplikacjiNaKGame);
+        }
+
+        static void DivideData(IEnumerable<googleApp> app)
+        {
+            var niskaOcenaAplikacjiGame = app
+                .Where(x => x.Rating < 3.2)
+                .Where(x => x.Category == Category.GAME);
+            var pierwszePiecNiskaOcenaAplikacjiGame = niskaOcenaAplikacjiGame.Take(5);
+            var ostatniePiecNiskaOcenaAplikacjiGame = niskaOcenaAplikacjiGame.TakeLast(5);
+            var wezWhileNiskaOcenaAplikacjiGame = niskaOcenaAplikacjiGame.TakeWhile(x=>x.Reviews >30);
+            var pominPierwszeNiskaOcenaAplikacjiGame = niskaOcenaAplikacjiGame.Skip(10);
+            var pominOstatnieNiskaOcenaAplikacjiGame = niskaOcenaAplikacjiGame.SkipLast(10);
+            var pominWhileNiskaOcenaAplikacjiGame = niskaOcenaAplikacjiGame.SkipWhile(x=>x.Reviews > 30);
+            Display(niskaOcenaAplikacjiGame);
+
+            Console.WriteLine($"\n" + nameof(pominWhileNiskaOcenaAplikacjiGame));
+            Display(pominWhileNiskaOcenaAplikacjiGame);
+        }
+
+        static void ProjectData(IEnumerable<googleApp> app)
+        {
+            var X = from n 
+                    in app 
+                    where n.Rating > 4.8 && n.Category == Category.SPORTS 
+                    select n;
+
+            var wysokaOcenaAplikacjiSports = app
+                .Where(x => x.Rating > 4.8)
+                .Where(x=>x.Category == Category.SPORTS);
+
+            var wysokaOcenaAplikacjiSportsNazwa = wysokaOcenaAplikacjiSports.Select(x => x.Name);
+            //Console.WriteLine(string.Join(Environment.NewLine, wysokaOcenaAplikacjiSportsNazwa));
+            var wysokaOcenaAplikacjiSportsDTO = wysokaOcenaAplikacjiSports.Select(x => new googleAppDto()
+            {
+                Name = x.Name,
+                Reviews = x.Reviews
+            });
+            //Console.WriteLine(string.Join(Environment.NewLine, wysokaOcenaAplikacjiSportsDTO.Select(x => x.Name)));
+            foreach (var dto in wysokaOcenaAplikacjiSportsDTO)
+            {
+                //Console.WriteLine($"{dto.Name} : {dto.Reviews}");
+            }
+            var genres = wysokaOcenaAplikacjiSports.SelectMany(x => x.Genres);
+            //Console.WriteLine(String.Join(" ", genres));
+
+            var funkcjaAnonimowa = wysokaOcenaAplikacjiSports.Select(app => new
+            {
+                Reviews = app.Reviews,
+                Name = app.Name,
+                Category = app.Category
+            });
+            //Console.WriteLine(String.Join(Environment.NewLine, funkcjaAnonimowa));
+        }
+
         static void GetData(IEnumerable<googleApp> app)
         {
-            var wysokaOcenaAplikacji = app.Where(x => x.Rating > 4.9);
-            Display(wysokaOcenaAplikacji);
+            var wysokaOcenaAplikacji = app.Where(x => x.Rating > 4.6);
+            var wysokaOcenaApikacjiBeauty = wysokaOcenaAplikacji.Where(x => x.Category == Category.BEAUTY);
+            var pierwszaWysokaOcenaApikacjiBeauty = wysokaOcenaApikacjiBeauty.FirstOrDefault(x=>x.Reviews<500);
+            var jednaWysokaOcenaApikacjiBeauty = wysokaOcenaApikacjiBeauty.SingleOrDefault(x=>x.Reviews<200);
+            var ostatniaWysokaOcenaAplikacjiBeauty = wysokaOcenaApikacjiBeauty.LastOrDefault(x=>x.Reviews < 500);
+
+            Display(wysokaOcenaApikacjiBeauty);
+
+            Console.WriteLine($"\n"+nameof(ostatniaWysokaOcenaAplikacjiBeauty));
+            Display(ostatniaWysokaOcenaAplikacjiBeauty);
         }
 
         static void Display(IEnumerable<googleApp> app)
@@ -83,6 +203,23 @@ namespace LINQ
             }
         }
 
+
+        static void Smieci()
+        {
+            var sequence = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var squaresOfOddNumbers = from n in sequence
+                                      where n % 2 == 1
+                                      select n;
+
+
+            foreach (var number in squaresOfOddNumbers)
+                Console.WriteLine(number);
+
+            Console.WriteLine();
+            var wypisz = sequence.Where(x => x > 5);
+            foreach (var x in wypisz)
+                Console.WriteLine(x);
+        }
         //static List<googleApp> Czytaj()
         //{
         //    var sciezkaDoPliku = Directory.GetFiles("C:/Users/kryst/Desktop", "czyataj.csv", SearchOption.AllDirectories);

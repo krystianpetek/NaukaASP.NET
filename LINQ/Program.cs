@@ -53,11 +53,33 @@ namespace LINQ
             //DataSetOperation(app);
             //DataVerification(app);
             //GroupData(app);
-            GroupDataOperations(app);
+            //GroupDataOperations(app);
         }
         static void GroupDataOperations(IEnumerable<googleApp> app)
         {
-            // 13.20
+            var kategorieGrup = app.GroupBy(app => app.Category);
+            Console.WriteLine("Kategoria".PadRight(25) + "Średnia".PadRight(25) + "Minimum".PadRight(15) + "Maximum".PadRight(15) + "SUMA".PadRight(15) + "sredniaOcenaWiekszaOd3");
+            foreach (var grupa in kategorieGrup)
+            {
+                var sredniaLiczbaRecenzji = grupa.Average(x => x.Reviews);
+                var minimalnaLiczbaRecenzji = grupa.Min(x => x.Reviews);
+                var maksymalnaLiczbaRecenzji = grupa.Max(x => x.Reviews);
+                var sumaLiczbyRecenzji = grupa.Sum(x => x.Reviews);
+                var sredniaOcenaKategoriiWiekszaOd3 = grupa.All(x => x.Rating > 3.0);
+                Console.WriteLine($"{grupa.Key,-24} {sredniaLiczbaRecenzji,-24} {minimalnaLiczbaRecenzji,-14} {maksymalnaLiczbaRecenzji,-14} {sumaLiczbyRecenzji, -14} {sredniaOcenaKategoriiWiekszaOd3}");
+            }
+            Console.WriteLine();
+
+            var minLiczbaRecenzjiWiekszaOd10 = app.GroupBy(app=>app.Category).Where(x => x.Min(a => a.Reviews) > 10);
+            Console.WriteLine(nameof(minLiczbaRecenzjiWiekszaOd10));
+            foreach (var grupa in minLiczbaRecenzjiWiekszaOd10)
+            {
+                var sredniaLiczbaRecenzji = grupa.Average(x => x.Reviews);
+                var minimalnaLiczbaRecenzji = grupa.Min(x => x.Reviews);
+                var maksymalnaLiczbaRecenzji = grupa.Max(x => x.Reviews);
+                var sumaLiczbyRecenzji = grupa.Sum(x => x.Reviews);
+                Console.WriteLine($"{grupa.Key,-24} {sredniaLiczbaRecenzji,-24} {minimalnaLiczbaRecenzji,-14} {maksymalnaLiczbaRecenzji,-14} {sumaLiczbyRecenzji}");
+            }
         }
 
         static void GroupData(IEnumerable<googleApp> app)

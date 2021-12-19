@@ -51,7 +51,45 @@ namespace LINQ
             //DivideData(app);
             //OrderData(app);
             //DataSetOperation(app);
-            DataVerification(app);
+            //DataVerification(app);
+            //GroupData(app);
+            GroupDataOperations(app);
+        }
+        static void GroupDataOperations(IEnumerable<googleApp> app)
+        {
+            // 13.20
+        }
+
+        static void GroupData(IEnumerable<googleApp> app)
+        {
+            var grupyKategorii = app.GroupBy(apka => apka.Category);
+            var grupaArtAndDesign = grupyKategorii.First(apka => apka.Key == Category.ART_AND_DESIGN); 
+            var wynikGrupaArtAndDesign = grupaArtAndDesign.ToList(); //var wynikGrupaArtAndDesign = grupaArtAndDesign.Select(apka => apka);
+            //Console.WriteLine($"Resultat dzialania grupowania po kategorii {grupaArtAndDesign.Key}");
+
+            foreach(var grupy in grupyKategorii)
+            {
+                var wynik = grupy.ToList();
+                Console.ForegroundColor = ConsoleColor.Red;
+                //Console.WriteLine($"\nGrupowanie po kategorii: {grupy.Key}");
+                Console.ResetColor();
+                var wez5Wynikow = wynik.Take(5).ToList();
+                //Display(wez5Wynikow);
+            }
+
+            var grupyKategoriaTyp = app.GroupBy(apka => new { apka.Category, apka.Type } );
+            foreach(var grupy in grupyKategoriaTyp)
+            {
+                var apps = grupy.ToList();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Grupowanie elementow dla Kategorii: {grupy.Key.Category} TYP: {grupy.Key.Type}");
+                Console.ResetColor();
+                Display(apps.Take(2));
+            }
+
+
+            //Display(wynikGrupaArtAndDesign);
+
 
         }
         static void DataVerification(IEnumerable<googleApp> app)
@@ -211,8 +249,7 @@ namespace LINQ
             var squaresOfOddNumbers = from n in sequence
                                       where n % 2 == 1
                                       select n;
-
-
+                        
             foreach (var number in squaresOfOddNumbers)
                 Console.WriteLine(number);
 

@@ -1,5 +1,3 @@
-using CwiczenieAPI.Controllers;
-using CwiczenieAPI.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,8 +10,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CwiczenieAPI.Controllers;
+using CwiczenieAPI.Services;
 
-namespace CwiczenieAPI
+namespace WeatherForecastAPI
 {
     public class Startup
     {
@@ -27,16 +27,14 @@ namespace CwiczenieAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddTransient<IWeatherForecastService, WeatherForecastService>();
             services.AddControllers();
-            services.AddDbContext<RestaurantDbContext>();
-            services.AddScoped<RestaurantSeeder>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, RestaurantSeeder seeder)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            seeder.Seed();
-            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -45,7 +43,9 @@ namespace CwiczenieAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            
+
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

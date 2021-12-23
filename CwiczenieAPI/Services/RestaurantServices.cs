@@ -54,9 +54,9 @@ namespace CwiczenieAPI.Services
             _dbContext.SaveChanges();
             return true;
         }
-        public Restaurant Edit(int x)
-        {
-            var restauracja = _dbContext.Restaurants.Where
-        }
+        //public Restaurant Edit(int x)
+        //{
+        //    var restauracja = _dbContext.Restaurants.Where
+        //}
     }
 }

@@ -58,15 +58,15 @@ namespace CwiczenieAPI.Controllers
             return NotFound();
         }
 
-        [HttpPut("{id}")]
-        public ActionResult Edit([FromRoute] int id)
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+        //[HttpPut("{id}")]
+        //public ActionResult Edit([FromRoute] int id)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return BadRequest(ModelState);
 
-            var wynik = _restaurantServices.Edit(id);
+        //    var wynik = _restaurantServices.Edit(id);
 
-        }
+        //}
 
     }
 }

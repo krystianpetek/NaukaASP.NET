@@ -33,20 +33,20 @@ namespace CwiczenieAPI.Controllers
             var restaurantDTO = _restaurantServices.GetById(x);
             if (restaurantDTO is null)
                 return NotFound();
-            
+
             return Ok(restaurantDTO);
         }
 
         [HttpPost]
-        public ActionResult CreateRestaurant([FromBody]CreateRestaurantDTO dto)
+        public ActionResult CreateRestaurant([FromBody] CreateRestaurantDTO dto)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
             var id = _restaurantServices.Create(dto);
-            return Created($"/api/restaurant/{id}",null);
+            return Created($"/api/restaurant/{id}", null);
         }
 
         [HttpDelete("{id}")]
@@ -58,15 +58,20 @@ namespace CwiczenieAPI.Controllers
             return NotFound();
         }
 
-        //[HttpPut("{id}")]
-        //public ActionResult Edit([FromRoute] int id)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return BadRequest(ModelState);
+        [HttpPut("{id}")]
+        public ActionResult Edit([FromRoute]int id, [FromBody] UpdateRestaurantDTO dto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-        //    var wynik = _restaurantServices.Edit(id);
+            var wynik = _restaurantServices.Edit(id,dto);
 
-        //}
+            if(!wynik)
+                return NotFound();
+
+            return Ok();
+
+        }
 
     }
 }

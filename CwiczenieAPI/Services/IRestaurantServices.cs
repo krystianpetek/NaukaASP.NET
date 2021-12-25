@@ -9,5 +9,6 @@ namespace CwiczenieAPI.Services
         public IEnumerable<RestaurantDTO> GetAll();
         public int Create(CreateRestaurantDTO dto);
         public bool Delete(int id);
+        public bool Edit(int id, UpdateRestaurantDTO dto);
     }
 }

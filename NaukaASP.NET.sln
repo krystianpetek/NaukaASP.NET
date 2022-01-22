@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LINQ", "LINQ\LINQ.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LINQcz2", "LINQcz2\LINQcz2.csproj", "{FEE15D21-B08C-437B-B2B8-09C0A2AE03C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CwiczenieAPI", "CwiczenieAPI\CwiczenieAPI.csproj", "{2CC6085E-EC51-4E65-A72B-E1B9EDCE3220}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CwiczenieAPI", "CwiczenieAPI\CwiczenieAPI.csproj", "{2CC6085E-EC51-4E65-A72B-E1B9EDCE3220}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecastAPI", "WeatherForecastAPI\WeatherForecastAPI.csproj", "{C73D0A21-43DE-4BA1-95F1-FE11FFE20250}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecastAPI", "WeatherForecastAPI\WeatherForecastAPI.csproj", "{C73D0A21-43DE-4BA1-95F1-FE11FFE20250}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab1Buzowicz", "Lab1Buzowicz\Lab1Buzowicz.csproj", "{1C1EAE11-24C4-4F01-914A-63EB5F9563CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{C73D0A21-43DE-4BA1-95F1-FE11FFE20250}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C73D0A21-43DE-4BA1-95F1-FE11FFE20250}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C73D0A21-43DE-4BA1-95F1-FE11FFE20250}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C1EAE11-24C4-4F01-914A-63EB5F9563CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C1EAE11-24C4-4F01-914A-63EB5F9563CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C1EAE11-24C4-4F01-914A-63EB5F9563CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C1EAE11-24C4-4F01-914A-63EB5F9563CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

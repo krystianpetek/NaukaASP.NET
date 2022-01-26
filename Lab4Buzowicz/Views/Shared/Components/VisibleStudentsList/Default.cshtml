@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Lab4Buzowicz.Models.Student>
+
+    <h3>Visible students:</h3>
+    <ul>
+        @foreach(var student in Model)
+    {
+        <li>@student.imie  @student.nazwisko</li>
+    }
+</ul>

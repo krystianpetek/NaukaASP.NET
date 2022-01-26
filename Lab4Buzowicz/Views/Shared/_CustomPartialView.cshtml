@@ -1,0 +1,11 @@
+﻿@model Student
+
+<div>this is my partial view</div>
+@{
+    Student x = new Student(){
+              imie = "Krystian",
+              nazwisko = "Petek",
+              wiek = 24
+    };
+}
+<div>Student @x.imie</div>

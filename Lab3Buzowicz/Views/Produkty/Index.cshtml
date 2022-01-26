@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Lab3Buzowicz.Entities.ProduktEntity>
+<h2>List of products </h2>
+<table class="table" >
+<thead>
+<tr>
+<th>Name</th>
+<th>Description </th>
+<th>Is visible? </th>
+</tr>
+</thead>
+<tbody>
+@foreach ( var item in Model)
+{
+<tr>
+<td>@item.Name </td>
+<td>@item.Description </td>
+<td>@(item.IsVisible ? "Yes" : "No")</td>
+</tr>
+}
+</tbody>
+</table>

@@ -1,0 +1,29 @@
+﻿@model (List<Lab5Buzowicz.Models.ProductEntity>,ProductEntity)
+<h2>List of products </h2>
+<table class="table" >
+<thead>
+<tr>
+<th>Name</th>
+<th>Description </th>
+<th>Is visible? </th>
+</tr>
+</thead>
+<tbody>
+@foreach ( var item in Model.Item1)
+{
+<tr>
+<td>@item.Name </td>
+<td>@item.Description </td>
+<td>@(item.IsVisible ? "Yes":"")<td>
+</tr>
+}
+</tbody>
+</table>
+
+
+@{
+    if (Model.Item2 != null)
+    {
+        <span>@Model.Item2.Name</span>
+        <span>@Model.Item2.Description</span>
+}}

@@ -1,4 +1,5 @@
-﻿using Lab4Buzowicz.Models;
+﻿using Lab4Buzowicz.Database;
+using Lab4Buzowicz.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,15 +13,40 @@ namespace Lab4Buzowicz.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly AppDbContext _context;
+        public HomeController(ILogger<HomeController> logger,AppDbContext context)
         {
+            _context = context;
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int? id)
         {
-            return View();
+            if(id == null || id == 0)
+            {
+
+                return View();
+            }
+            else
+            {
+                var student = _context.studenci.Where(x => x.id == id).FirstOrDefault();
+                return View(student);
+            }
+        }
+        
+        [HttpGet]
+        public IActionResult PrzekazaneDane(int? id)
+        {
+            if(id == null || id == 0)
+            {
+
+                return View();
+            }
+            else
+            {
+                var student = _context.studenci.Where(x => x.id == id).FirstOrDefault();
+                return View(student);
+            }
         }
 
         public IActionResult Privacy()

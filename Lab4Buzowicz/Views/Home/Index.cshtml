@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Student
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -9,4 +10,12 @@
 
 <alert Type="danger">This is my alert!</alert>
 
-<vc:visible-students-list take="5"/>
+<vc:visible-students-list />
+
+@{
+    if (Model != null)
+    {
+        <span>@Model.imie</span>
+<span>@Model.nazwisko</span>
+<span>@Model.wiek</span>}
+}

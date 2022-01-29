@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Lab5Buzowicz.Models.EndpointStats>
+
+    <div>
+        <ul>
+            @foreach(var item in Model)
+            {
+             <li>@item.HttpMethod @item.RequestUrl @item.RequestsCount <span>Czas ostatniego wywołania: @item.CzasZadania.ElapsedTicks</span></li>
+            }
+        </ul>
+    </div>

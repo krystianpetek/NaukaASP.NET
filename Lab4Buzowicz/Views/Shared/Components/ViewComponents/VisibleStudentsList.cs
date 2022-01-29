@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
+using System;
+using Lab4Buzowicz.Models;
+using System.Collections.Generic;
 
 namespace Lab4Buzowicz.Views.Shared.Components.ViewComponents
 {

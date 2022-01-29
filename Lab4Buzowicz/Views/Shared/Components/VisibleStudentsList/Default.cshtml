@@ -4,6 +4,8 @@
     <ul>
         @foreach(var student in Model)
     {
-        <li>@student.imie  @student.nazwisko</li>
+        <li>@student.imie  @student.nazwisko <a asp-action="PrzekazaneDane" asp-route-id="@student.id" class="btn btn-primary">Wiek</a></li>
     }
+
 </ul>
+

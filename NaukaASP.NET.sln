@@ -21,7 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab2Buzowicz", "Lab2Buzowic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab3Buzowicz", "Lab3Buzowicz\Lab3Buzowicz.csproj", "{091271DA-91E5-4F37-BCD4-3679DDE3652A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab4Buzowicz", "Lab4Buzowicz\Lab4Buzowicz.csproj", "{03015F3A-6BAF-4DAF-9867-0C1A8E1FE2B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab4Buzowicz", "Lab4Buzowicz\Lab4Buzowicz.csproj", "{03015F3A-6BAF-4DAF-9867-0C1A8E1FE2B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab5Buzowicz", "Lab5Buzowicz\Lab5Buzowicz.csproj", "{97CF6CD1-DE2A-495F-A3B4-E7657A42318D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab6Buzowicz", "Lab6Buzowicz\Lab6Buzowicz.csproj", "{000510B2-6644-464B-9742-FAE0F4D6B504}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +73,14 @@ Global
 		{03015F3A-6BAF-4DAF-9867-0C1A8E1FE2B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03015F3A-6BAF-4DAF-9867-0C1A8E1FE2B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03015F3A-6BAF-4DAF-9867-0C1A8E1FE2B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97CF6CD1-DE2A-495F-A3B4-E7657A42318D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97CF6CD1-DE2A-495F-A3B4-E7657A42318D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97CF6CD1-DE2A-495F-A3B4-E7657A42318D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97CF6CD1-DE2A-495F-A3B4-E7657A42318D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{000510B2-6644-464B-9742-FAE0F4D6B504}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{000510B2-6644-464B-9742-FAE0F4D6B504}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{000510B2-6644-464B-9742-FAE0F4D6B504}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{000510B2-6644-464B-9742-FAE0F4D6B504}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
